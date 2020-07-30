@@ -23,9 +23,10 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 function Tomber (num: number) {
+    led.plot(x, y)
     yt = num
     led.plot(xt, yt)
-    basic.pause(500)
+    basic.pause(200)
     led.unplot(xt, yt)
     if (yt == y && xt == x) {
         xt = randint(0, 4)
@@ -33,42 +34,14 @@ function Tomber (num: number) {
         led.plot(x, y)
         score += 1
     } else if (yt == 4) {
-        basic.showLeds(`
-            # # # # #
-            # . . . .
-            # # # # #
-            . . . . #
-            # # # # #
-            `)
-        basic.showLeds(`
-            # # # # #
-            # . . . .
-            # . . . .
-            # . . . .
-            # # # # #
-            `)
-        basic.showLeds(`
-            # # # # #
-            # . . . #
-            # . . . #
-            # . . . #
-            # # # # #
-            `)
-        basic.showLeds(`
-            # # # # #
-            # . . . #
-            # . . . .
-            # . . . .
-            # . . . .
-            `)
-        basic.showLeds(`
-            # # # # #
-            # . . . .
-            # # # # .
-            # . . . .
-            # # # # #
-            `)
-        basic.showNumber(score)
+        basic.showString("Score:")
+        basic.showString("" + (score))
+        basic.pause(500)
+        basic.clearScreen()
+        x = 2
+        y = 4
+        score = 0
+        basic.showString("Rejouer ?")
     } else {
     	
     }
